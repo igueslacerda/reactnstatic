@@ -1,0 +1,13 @@
+.card {
+  padding: 20px; /* Espaçamento interno do card */
+  background-color: #fff; /* Cor de fundo branca */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra do card */
+  transition: box-shadow 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Efeito de sombra ao passar o mouse */
+}
+.card h4 {
+  margin-top: 0; /* Remove a margem superior do título */
+}
