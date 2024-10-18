@@ -1,6 +1,9 @@
 .card {
+  width: fit-content;
+  min-width: 260px;
+  height: fit-content;
+  background-color: #fff;
   padding: 20px; /* Espaçamento interno do card */
-  background-color: #fff; /* Cor de fundo branca */
   border-radius: 8px; /* Bordas arredondadas */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra do card */
   transition: box-shadow 0.3s ease;
@@ -10,4 +13,11 @@
 }
 .card h4 {
   margin-top: 0; /* Remove a margem superior do título */
+}
+
+@media screen and (max-width: 350px) {
+  /* Seus estilos aqui */
+  .card {
+    min-width: 160px;
+  }
 }
