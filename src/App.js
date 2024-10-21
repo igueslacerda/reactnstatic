@@ -1,9 +1,11 @@
 import "./App.css";
+import MenuTop from "./componentes/MenuTop";
 import Card from "./componentes/Card";
 
 function App() {
   return (
     <div className="App">
+      <MenuTop />
       <div className="content" style={{ padding: "0 20px 20px 20px" }}>
         <header className="App-header">
           <h4>Web site experiment</h4>
