@@ -13,6 +13,7 @@
 }
 .card h4 {
   margin-top: 0; /* Remove a margem superior do título */
+  margin-bottom: 15px;
 }
 
 @media screen and (max-width: 350px) {
