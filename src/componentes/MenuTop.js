@@ -5,7 +5,7 @@ const MenuTop = () => {
   return (
     <div className="menuTop">
       <div className="dropdown">
-        <button className="dropbtn">Inicio</button>
+        <button className="dropbtn">Inicio&nbsp;&#9662;</button>
         <div className="dropdown-content">
           <a href="#">Item 1</a>
           <a href="#">Item 2</a>
