@@ -3,7 +3,7 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import Card from "./Card";
 
 const CardUsuario = () => {
-  const { user, definirUsuario } = useGlobalContext();
+  const { definirUsuario } = useGlobalContext();
   const [text, setText] = useState("");
 
   const handleClick = () => {
@@ -23,7 +23,6 @@ const CardUsuario = () => {
       >
         Definir Usuário
       </button>
-      <p className="mt-4 text-lg">{user}</p>
     </Card>
   );
 };

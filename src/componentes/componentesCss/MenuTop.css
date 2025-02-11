@@ -45,4 +45,10 @@
   background-color: #f1f1f1;
 }
 
+.menu-status {
+  display: inline-flex;
+  float: right;
+  padding: 0 10px;
+}
+
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_button  */
