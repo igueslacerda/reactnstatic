@@ -1,4 +1,10 @@
-import { useContext, createContext, useReducer, useMemo } from "react";
+import {
+  useContext,
+  createContext,
+  useReducer,
+  useMemo,
+  useCallback,
+} from "react";
 
 const GlobalContext = createContext({});
 
@@ -22,21 +28,21 @@ function reducer(state, action) {
 export const GlobalContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const definirUsuario = (usuario) => {
+  const definirUsuario = useCallback((usuario) => {
     dispatch({
       payload: {
         user: usuario,
       },
     });
-  };
+  }, []);
 
-  const toggleLigado = (ligado) => {
+  const toggleLigado = useCallback(() => {
     dispatch({
       payload: {
-        ligado: !ligado,
+        ligado: !state.ligado,
       },
     });
-  };
+  }, [state.ligado]);
 
   const memoizedValue = useMemo(
     () => ({
@@ -45,7 +51,7 @@ export const GlobalContextProvider = ({ children }) => {
       definirUsuario,
       toggleLigado,
     }),
-    [state.user, state.ligado]
+    [state.user, state.ligado, definirUsuario, toggleLigado]
   );
 
   return (
