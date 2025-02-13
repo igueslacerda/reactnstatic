@@ -26,7 +26,9 @@ const CardUsuario = () => {
           Definir Usuário
         </button>
       </p>
-      <label>{ligado ? "Ligado" : "Desligado"}</label>
+      <label style={{ color: ligado ? "green" : "red" }}>
+        {ligado ? "Ligado" : "Desligado"}
+      </label>
     </Card>
   );
 };

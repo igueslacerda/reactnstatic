@@ -3,7 +3,7 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import "./componentesCss/MenuTop.css";
 
 const MenuTop = () => {
-  const { user } = useGlobalContext();
+  const { user, ligado, toggleLigado } = useGlobalContext();
 
   return (
     <div className="menuTop">
@@ -24,7 +24,14 @@ const MenuTop = () => {
         </div>
       </div>
       <div className="menu-status">
-        <p>Usuario logado: {user}</p>
+        <p>
+          Usuario logado: {user}{" "}
+          <input
+            type="checkbox"
+            checked={ligado}
+            onChange={(e) => toggleLigado()}
+          />
+        </p>
       </div>
     </div>
   );
