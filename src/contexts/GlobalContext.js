@@ -23,7 +23,7 @@ function reducer(state, action) {
     case "TOGGLE_LIGADO":
       return { ...state, ligado: !state.ligado };
     case "DEFINIR_USUARIO":
-      return { ...state, user: action.payload };
+      return { ...state, user: action.payload.user };
     default:
       return state;
   }
@@ -54,6 +54,7 @@ export const GlobalContextProvider = ({ children }) => {
     }),
     [state.user, state.ligado, definirUsuario, toggleLigado]
   );
+  console.log("Contexto atualizado:", memoizedValue);
 
   return (
     <GlobalContext.Provider value={memoizedValue}>

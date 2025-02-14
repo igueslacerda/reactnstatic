@@ -10,7 +10,7 @@ const CardUsuario = () => {
     definirUsuario(text);
   };
 
-  console.log("Renderizou o card usuário");
+  console.log("Renderizou o card usuário", ligado);
   return (
     <Card titulo="Login">
       <p>
