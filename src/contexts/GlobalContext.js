@@ -19,10 +19,14 @@ const initialState = {
 };
 
 function reducer(state, action) {
-  return {
-    ...state,
-    ...action.payload,
-  };
+  switch (action.type) {
+    case "TOGGLE_LIGADO":
+      return { ...state, ligado: !state.ligado };
+    case "DEFINIR_USUARIO":
+      return { ...state, user: action.payload };
+    default:
+      return state;
+  }
 }
 
 export const GlobalContextProvider = ({ children }) => {
@@ -30,6 +34,7 @@ export const GlobalContextProvider = ({ children }) => {
 
   const definirUsuario = useCallback((usuario) => {
     dispatch({
+      type: "DEFINIR_USUARIO",
       payload: {
         user: usuario,
       },
@@ -37,12 +42,8 @@ export const GlobalContextProvider = ({ children }) => {
   }, []);
 
   const toggleLigado = useCallback(() => {
-    dispatch({
-      payload: {
-        ligado: !state.ligado,
-      },
-    });
-  }, [state.ligado]);
+    dispatch({ type: "TOGGLE_LIGADO" });
+  }, []);
 
   const memoizedValue = useMemo(
     () => ({
