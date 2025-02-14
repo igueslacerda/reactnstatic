@@ -23,7 +23,7 @@ function reducer(state, action) {
     case "TOGGLE_LIGADO":
       return { ...state, ligado: !state.ligado };
     case "DEFINIR_USUARIO":
-      return { ...state, user: action.payload.user };
+      return { ...state, user: action.payload };
     default:
       return state;
   }
@@ -35,9 +35,7 @@ export const GlobalContextProvider = ({ children }) => {
   const definirUsuario = useCallback((usuario) => {
     dispatch({
       type: "DEFINIR_USUARIO",
-      payload: {
-        user: usuario,
-      },
+      payload: usuario,
     });
   }, []);
 
