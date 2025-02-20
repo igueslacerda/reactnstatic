@@ -1,27 +1,36 @@
 import React from "react";
 import { useGlobalContext } from "../contexts/GlobalContext";
 
-const DTable = () => {
+function findRowKey(linha, propriedade, indice) {
+  let valor = null;
+  if (propriedade) valor = linha[propriedade];
+  else valor = indice;
+  return valor;
+}
+
+const DTable = ({ colunas, dados }) => {
   const { logRenders } = useGlobalContext();
+  const colKey = colunas?.find((c) => c.Key === true)?.propriedade;
 
   if (logRenders) console.log("Renderizou a tabela");
   return (
     <table>
       <thead>
         <tr>
-          <th>Id</th>
-          <th>Descrição</th>
+          {colunas && colunas.map((col, ix) => <th key={ix}>{col.titulo}</th>)}
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Primeira Linha</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Segunda Linha</td>
-        </tr>
+        {dados &&
+          dados.map((li, ix) => {
+            const key = findRowKey(li, colKey, ix);
+            return (
+              <tr key={key}>
+                <td>x</td>
+                <td>Teste</td>
+              </tr>
+            );
+          })}
       </tbody>
     </table>
   );
