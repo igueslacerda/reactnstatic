@@ -3,6 +3,7 @@ import "./App.css";
 import MenuTop from "./componentes/MenuTop";
 import Card from "./componentes/Card";
 import CardUsuario from "./componentes/CardUsuario";
+import DTable from "./componentes/DTable";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
               A largura e cor de fundo pode ser customizado.
             </Card>
             <CardUsuario />
+            <Card titulo="Tabela">
+              <DTable />
+            </Card>
           </div>
         </div>
       </div>

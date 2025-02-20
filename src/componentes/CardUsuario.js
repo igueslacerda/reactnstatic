@@ -1,24 +1,20 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import Card from "./Card";
 
 const CardUsuario = () => {
-  const { ligado, definirUsuario } = useGlobalContext();
-  const [text, setText] = useState("");
+  const { ligado, definirUsuario, logRenders } = useGlobalContext();
+  const inputRef = useRef(null);
 
   const handleClick = () => {
-    definirUsuario(text);
+    definirUsuario(inputRef.current.value);
   };
 
-  console.log("Renderizou o card usuário", ligado);
+  if (logRenders) console.log("Renderizou o card usuário", ligado);
   return (
     <Card titulo="Login">
       <p>
-        <input
-          type="text"
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Digite o usuario..."
-        />
+        <input type="text" ref={inputRef} placeholder="Digite o usuario..." />
         <button
           className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"
           onClick={handleClick}

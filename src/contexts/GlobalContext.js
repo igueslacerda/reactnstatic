@@ -32,6 +32,16 @@ function reducer(state, action) {
 export const GlobalContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // const definirUsuario = (usuario) => {
+  //   dispatch({
+  //     type: "DEFINIR_USUARIO",
+  //     payload: usuario,
+  //   });
+  // };
+
+  // const toggleLigado = () => {
+  //   dispatch({ type: "TOGGLE_LIGADO" });
+  // };
   const definirUsuario = useCallback((usuario) => {
     dispatch({
       type: "DEFINIR_USUARIO",
@@ -49,10 +59,12 @@ export const GlobalContextProvider = ({ children }) => {
       ligado: state.ligado,
       definirUsuario,
       toggleLigado,
+      logRenders: false,
     }),
     [state.user, state.ligado, definirUsuario, toggleLigado]
   );
-  console.log("Contexto atualizado:", memoizedValue);
+  if (memoizedValue.logRenders)
+    console.log("Contexto atualizado:", memoizedValue);
 
   return (
     <GlobalContext.Provider value={memoizedValue}>
