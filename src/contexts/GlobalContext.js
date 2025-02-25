@@ -59,12 +59,10 @@ export const GlobalContextProvider = ({ children }) => {
       ligado: state.ligado,
       definirUsuario,
       toggleLigado,
-      logRenders: false,
     }),
     [state.user, state.ligado, definirUsuario, toggleLigado]
   );
-  if (memoizedValue.logRenders)
-    console.log("Contexto atualizado:", memoizedValue);
+  //console.log("Contexto atualizado:", memoizedValue);
 
   return (
     <GlobalContext.Provider value={memoizedValue}>

@@ -1,5 +1,4 @@
 import React from "react";
-import { useGlobalContext } from "../contexts/GlobalContext";
 
 function findRowKey(linha, propriedade, indice) {
   let valor = null;
@@ -8,32 +7,35 @@ function findRowKey(linha, propriedade, indice) {
   return valor;
 }
 
-const DTable = ({ colunas, dados }) => {
-  const { logRenders } = useGlobalContext();
+const DTable = React.memo(({ colunas, dados }) => {
   const colKey = colunas?.find((c) => c.Key === true)?.propriedade;
 
-  if (logRenders) console.log("Renderizou a tabela");
-  return (
-    <table>
-      <thead>
-        <tr>
-          {colunas && colunas.map((col, ix) => <th key={ix}>{col.titulo}</th>)}
-        </tr>
-      </thead>
-      <tbody>
-        {dados &&
-          dados.map((li, ix) => {
-            const key = findRowKey(li, colKey, ix);
-            return (
-              <tr key={key}>
-                <td>x</td>
-                <td>Teste</td>
-              </tr>
-            );
-          })}
-      </tbody>
-    </table>
-  );
-};
+  console.log("Renderizou a tabela");
+  if (colunas)
+    return (
+      <table>
+        <thead>
+          <tr>
+            {colunas.map((col, ix) => (
+              <th key={ix}>{col.titulo}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {dados &&
+            dados.map((li, ix) => {
+              const key = findRowKey(li, colKey, ix);
+              return (
+                <tr key={`tbrow-${key}`}>
+                  {colunas.map((col, ix) => (
+                    <td>{li[col.propriedade]}</td>
+                  ))}
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    );
+});
 
 export default DTable;

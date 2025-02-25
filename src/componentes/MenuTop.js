@@ -3,9 +3,9 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import "./componentesCss/MenuTop.css";
 
 const MenuTop = () => {
-  const { user, ligado, toggleLigado, logRenders } = useGlobalContext();
+  const { user, ligado, toggleLigado } = useGlobalContext();
 
-  if (logRenders) console.log("Renderizou o menu");
+  console.log("Renderizou o menu");
   return (
     <div className="menuTop">
       <div className="dropdown">

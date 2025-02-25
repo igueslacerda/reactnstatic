@@ -3,14 +3,14 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import Card from "./Card";
 
 const CardUsuario = () => {
-  const { ligado, definirUsuario, logRenders } = useGlobalContext();
+  const { ligado, definirUsuario } = useGlobalContext();
   const inputRef = useRef(null);
 
   const handleClick = () => {
     definirUsuario(inputRef.current.value);
   };
 
-  if (logRenders) console.log("Renderizou o card usuário", ligado);
+  console.log("Renderizou o card usuário", ligado);
   return (
     <Card titulo="Login">
       <p>
