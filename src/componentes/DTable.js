@@ -7,6 +7,13 @@ function findRowKey(linha, propriedade, indice) {
   return valor;
 }
 
+function setColumnAlignment(col) {
+  let align = "left";
+  if (col.alinhamento === "direita") align = "right";
+  else if (col.alinhamento === "centro") align = "center";
+  return { textAlign: align };
+}
+
 const DTable = React.memo(({ colunas, dados }) => {
   const colKey = colunas?.find((c) => c.Key === true)?.propriedade;
 
@@ -17,7 +24,9 @@ const DTable = React.memo(({ colunas, dados }) => {
         <thead>
           <tr>
             {colunas.map((col, ix) => (
-              <th key={ix}>{col.titulo}</th>
+              <th key={ix} style={setColumnAlignment(col)}>
+                {col.titulo}
+              </th>
             ))}
           </tr>
         </thead>
@@ -28,7 +37,12 @@ const DTable = React.memo(({ colunas, dados }) => {
               return (
                 <tr key={`tbrow-${key}`}>
                   {colunas.map((col, ix) => (
-                    <td>{li[col.propriedade]}</td>
+                    <td
+                      key={`tbrow-${key}-${ix}`}
+                      style={setColumnAlignment(col)}
+                    >
+                      {li[col.propriedade]}
+                    </td>
                   ))}
                 </tr>
               );

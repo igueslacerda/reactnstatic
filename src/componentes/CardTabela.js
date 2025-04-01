@@ -27,7 +27,7 @@ const CardTabela = () => {
 
   const colunas = useMemo(
     () => [
-      { titulo: "Id", propriedade: "id", key: true },
+      { titulo: "Id", propriedade: "id", alinhamento: "direita", key: true },
       { titulo: "Descrição", propriedade: "descricao" },
     ],
     []
